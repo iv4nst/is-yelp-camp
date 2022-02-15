@@ -1,0 +1,48 @@
+<!-- use boilerplate; include this content to boilerplate layout -->
+<% layout('layouts/boilerplate.ejs') %>
+
+<!-- cluster map -->
+<div id="cluster-map"></div>
+
+<div class="container">
+    <h1>All campgrounds</h1>
+
+    <% for (const campground of campgrounds) { %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <% if (campground.images.length) { %>
+                        <img src="<%= campground.images[0].url %>" alt="" class="img-fluid">
+                    <% } else { %>
+                        <img src="https://res.cloudinary.com/ivans/image/upload/v1644602708/YelpCamp/dhowhko5f2ma44u2irpq.jpg"
+                             alt="" class="img-fluid">
+                    <% } %>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= campground.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= campground.description %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= campground.location %>
+                            </small>
+                        </p>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">
+                            View <%= campground.title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<script>
+    const mapboxToken = '<%- process.env.MAPBOX_TOKEN %>'
+    const campgrounds = {features: <%- JSON.stringify(campgrounds) %>}  // "features" to conform with mapbox data
+</script>
+<script src="/js/clusterMap.js"></script>

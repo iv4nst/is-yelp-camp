@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+<div class="row">
+    <h1 class="text-center">
+        New Campground
+    </h1>
+    <!-- offset-3 means it will move it -->
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" name="campground[title]" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" id="location" name="campground[location]" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Campground Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" id="price" name="campground[price]" class="form-control" placeholder="0.00"
+                           aria-label="Amount" aria-describedby="price-label" required>
+                    <div class="valid-feedback">
+                        Looks good
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="campground[description]" id="description" cols="30" rows="2" class="form-control"
+                          required></textarea>
+                <div class="valid-feedback">
+                    Looks good
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Add Images</label>
+                <input class="form-control" type="file" id="image" name="image" multiple>
+                <div class="valid-feedback">
+                    Looks good
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Submit" class="btn btn-success">
+            </div>
+        </form>
+
+    </div>
+</div>
+
+    
